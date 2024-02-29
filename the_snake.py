@@ -106,13 +106,17 @@ class Game:
                 pygame.quit()
                 raise SystemExit
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP and self.snake.direction != DOWN:
+                if event.key == pygame.K_UP and \
+                    self.snake.direction != DOWN:
                     self.snake.next_direction = UP
-                elif event.key == pygame.K_DOWN and self.snake.direction != UP:
+                elif event.key == pygame.K_DOWN and \
+                    self.snake.direction != UP:
                     self.snake.next_direction = DOWN
-                elif event.key == pygame.K_LEFT and self.snake.direction != RIGHT:
+                elif event.key == pygame.K_LEFT and \
+                    self.snake.direction != RIGHT:
                     self.snake.next_direction = LEFT
-                elif event.key == pygame.K_RIGHT and self.snake.direction != LEFT:
+                elif event.key == pygame.K_RIGHT and \
+                    self.snake.direction != LEFT:
                     self.snake.next_direction = RIGHT
 
     def update(self):
@@ -123,15 +127,19 @@ class Game:
             self.snake.positions[i] = self.snake.positions[i - 1][:]
         if self.snake.direction == UP:
             self.snake.positions[0] = (self.snake.positions[0][0],
-            (self.snake.positions[0][1] - GRID_SIZE) % SCREEN_HEIGHT)
+                                    (self.snake.positions[0][1] - GRID_SIZE) 
+                                    % SCREEN_HEIGHT)
         elif self.snake.direction == DOWN:
             self.snake.positions[0] = (self.snake.positions[0][0],
-            (self.snake.positions[0][1] + GRID_SIZE) % SCREEN_HEIGHT)
+                                    (self.snake.positions[0][1] + GRID_SIZE) 
+                                    % SCREEN_HEIGHT)
         elif self.snake.direction == LEFT:
-            self.snake.positions[0] = ((self.snake.positions[0][0] - GRID_SIZE) % SCREEN_WIDTH,
+            self.snake.positions[0] = ((self.snake.positions[0][0] - GRID_SIZE) 
+                                    % SCREEN_WIDTH,
                                         self.snake.positions[0][1])
         elif self.snake.direction == RIGHT:
-            self.snake.positions[0] = ((self.snake.positions[0][0] + GRID_SIZE) % SCREEN_WIDTH,
+            self.snake.positions[0] = ((self.snake.positions[0][0] + GRID_SIZE) 
+                                    % SCREEN_WIDTH,
                                         self.snake.positions[0][1])
 
         if self.snake.check_collision():
